@@ -1,0 +1,52 @@
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <title>Chat(socket.io)</title>
+     
+        <link rel="stylesheet" media="screen" href="styles.css">
+       
+        <script src="script.js" defer></script>
+        <script src="/socket.io/socket.io.js"></script>
+    </head>
+    <body>
+        <div class = "entry-form">
+        <h2>Enter the Chat</h2>
+         <h3>User Name</h3>
+          <div>
+         <input type = "text" placeholder = "Name" id = "nameInput">
+          </div>
+          <div>
+         <input type = "text" placeholder = "NickName" id = "nickNameInput">
+            </div>
+         <input type = "button" value = "OK" id = "nameButton">
+        </div> 
+       <h3>Chat<h3>
+    <div class = "container">
+      <aside class="usersList">
+        <ul id = "usersList" class = "user">
+           
+        </ul>
+      </aside> 
+      <section class="messages" id = "allMessages">
+          <!-- <ul id = "allMessages">
+              
+           <!--  <li class = messageRight>
+            <a class="message-author" href=""> Name(@nick) </a>
+            <span class="message-date">  Fri Jan 25 2015 - 11:12:36 </span> 
+            <span class="message-content">Blabla</span>      
+            </li>
+           <li class = messageLeft>      
+            <a class="message-author" href="#"> Lisa Jordan </a>
+            <span class="message-date">  Fri Jan 25 2015 - 11:12:36 </span>  
+            <span class="message-content">Blabla</span>   
+           </li> 
+            </ul> -->
+      </section> 
+     </div>
+    <div class = "sendMessage">
+      <input type = "text" placeholder = "Message" id = "messageInput">
+      <input type = "button" value = "Send" id = "sendMessage">
+      <div id = "input-info"></div>
+    </div>
+    </body>
+    </html>
