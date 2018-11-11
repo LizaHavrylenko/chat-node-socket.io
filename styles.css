@@ -1,88 +1,55 @@
 .container{
-    display:flex;
-    width:450px;
-    height:350px ; 
-    border:1px solid black;
-  }
-  aside{
-    border:1px solid black;
-    overflow-y:auto; 
-     
-  }
-  
- /*  .messageRight{
-    text-align:right;
-  }
-    */
- /* .element{
-     display:flex;
-     flex-direction: column;
- } */
-  .user{
-      font-size:17px;
-       
-  }
-  .message-text{
-    font-size:14px;
-   
-  }
-  
-  /* .messageLeft{
-    text-align:left;
-  } */
-   .wrapper{
-       display:flex;
-       flex-direction: row;
-        padding-bottom:10px;
-   }
-   
-   .time{
-    flex-grow:1;
-    font-size:15px;
-    color:black;
+  display:flex;
+  width:450px;
+  height:350px ; 
+  border:1px solid black;
 }
-   .creator {
-    flex-grow:2;
-    font-size: 15px;
-    color:black;
-  }
-  
-    .element{
-    border:1px solid #888888;
-    /* width:300px;
-    height:70px;
-      */
-  }
-   
-   .message-content {
-    display: block;
-  } 
- /*  .message-text{
-    padding-top:10px;
-    padding-bottom:10px;
-  } */
-  .sendMessage{
-    display:flex;
-    
-     width:450px; 
-    height:30px;
-    padding-top:10px
-  }
-  #messageInput{
-    flex-grow:3
-  }
-  #sendButton{
-    flex-grow:1
-  }
-  section.messages{
-      display:flex;
-      flex-direction:column;
-      overflow-y:auto;
-      /* overflow-y:auto;
-      width:400;
-      height:300; 
-      border:1px solid black;*/
-       
-    
-  }
+aside{
+  border:1px solid black;
+  overflow-y:auto; 
+}
+.user{
+  font-size:17px;
+}
+.message-text{
+  font-size:14px; 
+}
+.wrapper{
+  display:flex;
+  flex-direction: row;
+  padding-bottom:10px;
+}
+.time{
+  flex-grow:1;
+  font-size:15px;
+  color:black;
+}
+.creator {
+  flex-grow:2;
+  font-size: 15px;
+  color:black;
+}
+.element{
+  border:1px solid #888888;
+}
+.message-content {
+  display: block;
+} 
+.sendMessage{
+  display:flex;
+  width:450px; 
+  height:30px;
+  padding-top:10px
+}
+#messageInput{
+  flex-grow:3
+}
+#sendButton{
+  flex-grow:1
+}
+section.messages{
+  display:flex;
+  flex-direction:column;
+  overflow-y:auto;
+}
    

@@ -1,8 +1,8 @@
-var app = require('express')();
-var http = require('http').Server(app);
-var io = require('socket.io')(http); 
-var allMessages = [];
-var allUsers = [];
+const app = require('express')();
+const http = require('http').Server(app);
+const io = require('socket.io')(http); 
+const allMessages = [];
+const allUsers = [];
  
 
 app.get('/', function(req, res){
@@ -31,66 +31,63 @@ io.on('connection', function(socket){
         socket.broadcast.emit('no type message', typemsg);
     });
     socket.on('disconnecting', function(){
-      leftChat();
+        leftChat();
     });
     
-leftChat = function (){
-        var timestamp =  new Date();
-        var data = {
-        name: name,
-        nickName: nickName,
-        text: "@"+nickName+" left chat.",
-        'timestamp': timestamp
+    const leftChat = function (){
+        const timestamp =  new Date();
+        const data = {
+            name: name,
+            nickName: nickName,
+            text: "@"+nickName+" left chat.",
+            'timestamp': timestamp
         };
         socket.broadcast.emit('chat message', data);
         allUsers.forEach((user)=> {
-                        if ( (user.nickName==nickName)&&(user.name==name)){
-                            user.status = 'just left';
-                            setTimeout(()=>{
-                                if (user.status == 'just left'){
-                                user.status = 'offline';
-                                io.emit('names history', allUsers);
-                                }
-                            }, 60000);
-                        }
-                    } 
-                );
+            if ( (user.nickName==nickName)&&(user.name==name)){
+                user.status = 'just left';
+                setTimeout(()=>{
+                    if (user.status == 'just left'){
+                        user.status = 'offline';
+                        io.emit('names history', allUsers);
+                    }
+                }, 60000);
+            }
+        } 
+        );
         io.emit('names history', allUsers);
-    }
+    };
         
-  
     socket.emit('chat history', allMessages);
    
     socket.on('user names', function(entry){
-       if ( !allUsers.some((user)=>{return (user.nickName==entry.nickName)&&(user.name==entry.name);}) )
-       {allUsers.push(entry)};
-       if (!((name=='Name')&&(nickName=='NickName')))
+        if ( !allUsers.some((user)=>{return (user.nickName==entry.nickName)&&(user.name==entry.name);}) )
+        {allUsers.push(entry);
+        }
+        if (!((name=='Name')&&(nickName=='NickName')))
         {leftChat();}
-      /*   io.emit('user names', entry); */
         name = entry.name;
         nickName = entry.nickName;
         allUsers.forEach((user)=> {
-                        if ( (user.nickName==nickName)&&(user.name==name))
-                                {
-                                    user.status = 'just appeared';
-                                    io.emit('names history', allUsers);
+            if ( (user.nickName==nickName)&&(user.name==name))
+            {
+                user.status = 'just appeared';
+                io.emit('names history', allUsers);
                                     
-                                    setTimeout(()=>{
-                                        if (user.status == 'just appeared'){
-                                        user.status = 'online';
-                                        io.emit('names history', allUsers);
-                                        }
-                                    }, 60000);
-                                }
+                setTimeout(()=>{
+                    if (user.status == 'just appeared'){
+                        user.status = 'online';
+                        io.emit('names history', allUsers);
+                    }
+                }, 60000);
+            }
         });
 
-    socket.emit('names history', allUsers);
-    })
+        socket.emit('names history', allUsers);
+    });
 });
-
-
 
 
 http.listen(3000, function(){
     console.log('listening on 3000');
-})
+});
